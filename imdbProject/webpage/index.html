@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+    <html>
+        
+        <head>
+            <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+			<meta content="utf-8" http-equiv="encoding">
+			<title>IMDB Top 250</title>
+            
+			<link rel="stylesheet" type="text/css" href="staticfiles/js/min/jqcloud.css" />
+			<link rel="stylesheet" type="text/css" href="staticfiles/bootstrap/css/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="staticfiles/bootstrap/css/bootstrap-responsive.min.css" />
+         
+            <script type="text/javascript" src="staticfiles/js/min/json2.min.js"></script>
+            <script type="text/javascript" src="staticfiles/js/min/AC_OETags.min.js"></script>
+            <script type="text/javascript" src="staticfiles/js/min/cytoscapeweb.min.js"></script>
+			<script type="text/javascript" src="staticfiles/js/min/jquery.js"></script>
+			<script type="text/javascript" src="staticfiles/js/src/jqcloud-1.0.2.js"></script>
+			<script type="text/javascript" src="staticfiles/js/bootstrap.min.js"></script>
+			
+			<script type="text/javascript" src="/UA/IEETA/Redmine/LSIproject/LSIsearch/static/CytoscapeDrawing.js"></script>
+			<script type="text/javascript" src="/UA/IEETA/Redmine/LSIproject/LSIsearch/static/MovieList.js"></script>
+			<script type="text/javascript" src="staticfiles/MovieList.js"></script>
+			
+			
+			
+			<script type="text/javascript">
+				window.onload = function() {
+					var static_path = "staticfiles/";
+					retrieved_docs(static_path,1);
+				}
+			
+			/*	window.onload = function() {
+					$('a').mouseover(function(){
+						$('#content_bar').collapse('hide');
+					});
+					$('a').mouseout(function(){
+						
+					});
+					$('#content_docs').mouseover(function(){
+						//if($('#content_bar').on('hidden')){
+							$('#content_bar').collapse('hide');
+							//$('#content_docs').append('show');
+					//	}
+					//	if($('#content_bar').on('shown')){
+						//	$('#content_bar').collapse('hide');
+							//$('#content_docs').text('hide');
+					//	}
+					});
+					$('#content_docs').mouseout(function(){
+						$('#content_bar').collapse('show');
+					});
+
+					
+					//path for the static files
+					var static_path = "/UA/IEETA/Redmine/LSIproject/LSIsearch/static/"				
+					
+					// initialization options
+					var options = {															
+						swfPath: static_path+"swf/CytoscapeWeb",		
+						flashInstallerPath: static_path+"swf/playerProductInstall"
+					};
+					
+					// init and draw									
+					var vis = new org.cytoscapeweb.Visualization("cytoscapeweb", options);	
+					
+					// draw cytoscape graph with the topics from the LSI process
+					draw_cytoscape(static_path,vis);										
+					
+					// send query process LSI
+					search_query(static_path);												
+					
+					// change type of word cloud
+					radio_select(vis);														
+					
+					// callback when Cytoscape Web has finished drawing
+					vis.ready(function() {													
+						// set the style programmatically
+						document.getElementById("color").onclick = function(){
+							visual_style.global.backgroundColor = rand_color();				
+							vis.visualStyle(visual_style);
+						};
+						//select specific node and show its word cloud and relevant documents
+						//when loading page
+						var n = vis.nodes()[0];												
+						vis.select([n]);
+						retrieved_docs(static_path,n.data.id);
+						getcloud(n.data.id,false);
+						
+					});
+					
+					
+					// do something when clicking the nodes
+					vis.addListener("click","nodes",function(event) {  
+						handle_click(event);
+					});
+					
+					//when clicking a node, display its word cloud
+					//and relevant documents list
+					function handle_click(event) {
+						var target = event.target;
+						select_clouds(target.data.id);
+						retrieved_docs(static_path,target.data.id);
+					};
+				};*/
+			</script>
+			
+			
+			
+            <style>
+                * { margin: 0; padding: 0; font-family: Helvetica, Arial, Verdana, sans-serif; }
+                html, body { height: 100%; width: 100%; padding: 0; margin: 0; background-color: #f0f0f0; }
+                body { line-height: 1.5; color: #000000; font-size: 14px; }
+                /* The Cytoscape Web container must have its dimensions set. */
+				#content_bar {width:100% !important; position:relative; padding:0px !important;}
+				#cytoscapeweb { width: 60% !important; height: 100% !important;}
+				#note { width: 100%; text-align: center; padding-top: 1em; }
+				#content_clouds { width:40%; height:100%; position:absolute; float: right !important; right:25px; margin-right:-25px;}
+				.navbar-search { position: relative;}
+				.navbar-search .search-query { padding-left: 29px;}
+				.navbar-search .icon-search { position: absolute; top: 7px; left: 11px;}
+                .link { text-decoration: underline; color: #0b94b1; cursor: pointer; }
+            </style>
+        </head>
+        
+        <body>
+			<div id="content_docs" >Cenas</div>
+        </body>
+        
+    </html>
